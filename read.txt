@@ -1,0 +1,90 @@
+一、git简介和初始化仓库
+    1.进入创建的文件夹使用 git init命令会创建一个隐藏的.git文件
+    2.配置仓库所有者信息：
+        git config user.name '张三'
+        git config user.email 'zhangsan@163.com'
+    本地仓库创建完毕
+    3.创建自己的项目
+        添加本地文件到暂存区
+        git add .
+        提交到本地仓库
+        git commit -m '版本描述'
+        推送到远程仓库
+        git push
+    4.查看记录
+        git status 状态
+        git flog/refolg 日志记录仪
+    5.回退版本
+        git reset --HEAD
+                    HEAD表示当前最新版本
+                    HEAD^表示当前最新版本的前一个版本
+                    HEAD^^表示当前最新版本的前两个版本，以此类推...
+                    HEAD~1表示当前最新版本的前一个版本
+                    HEAD~10表示当前最新版本的前10个版本，以此类推...
+        git reset --hard 版本号
+    6.撤销修改
+        撤销工作区代码 git checkout 文件名
+        # 第一步：将暂存区代码撤销到工作区
+        git reset HEAD  文件名
+        # 第二步：撤销工作区代码
+        git checkout 文件名
+二.远程git仓库
+    1.创建好后配置ssh
+    2.修改电脑git配置
+        vi .gitconfig
+             [user]
+              email = zhangjiesharp@163.com
+              name = zhangxiaochuZXC
+    3.生成SSH公钥
+         ssh-keygen -t rsa -C "zhangjiesharp@163.com"
+    4.配置SSH公钥
+        补充：删除旧的秘钥
+        删除~/.ssh目录，这里存储了旧的密钥  rm -r .ssh
+
+    5.克隆项目
+        git clone https://github.com/zhangxiaochuZXC/test007.git
+    6.配置经理身份信息
+         git config user.name '经理'
+         git config user.email 'manager@163.com'
+    7.创建项目
+    8.推送项目到远程仓库git add .
+                          commit
+                          push
+
+
+三.标签和分支
+    1.标签
+        1.进入到经理的本地仓库test007
+        2.经理在本地打标签
+             git tag -a 标签名 -m '标签描述'
+             例：
+             git tag -a v1.0 -m 'version 1.0'
+        3.经理推送标签到远程仓库
+             git push origin 标签名
+             例：
+             git push origin v1.0
+        4.删除本地和远程标签
+             # 删除本地标签
+             git tag -d 标签名
+             # 删除远程仓库标签
+             git push origin --delete tag 标签名
+    2.分支
+        1.进入到经理的本地仓库test007
+        2.查看当前分支 git branch
+        3.经理创建并切换到dev分支  git checkout -b dev
+        4.设置本地分支跟踪远程指定分支（将分支推送到远程） git push -u origin dev
+        5. 先切换到master分支   git checkout master
+        6.dev分支合并到master分支 git merge dev
+        7.经理推送合并分支操作到远程仓库 git pull
+
+
+
+
+
+
+
+
+
+
+
+
